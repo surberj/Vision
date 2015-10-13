@@ -11,14 +11,10 @@ Over the last Decade a series of different approaches for simultaneous localizat
 
 The main contribution of this thesis will contain
 
-1) a useful definition of performance measures like accuracy, computational complexity, robustness and limitations
-
-2) the interfacing of a synchronized visual-inertial sensor with the open source versions of OKVIS and ROVIO running on a ros environment.
-
-3) an analysis comparing different approaches like OKVIS and ROVIO according to the performance measures
-
-4) and outline of future work with a suggestion on how to proceed in the AEROWORKS project
+- a useful definition of performance measures like accuracy, computational complexity, robustness and limitations
+- the interfacing of a synchronized visual-inertial sensor with the open source versions of OKVIS and ROVIO running on a ros environment.
+- an analysis comparing different approaches like OKVIS and ROVIO according to the performance measures
+- and outline of future work with a suggestion on how to proceed in the AEROWORKS project
 
 and optionally
-
-5) the application of the proposed algorithm on a set of sensors (camera, IMU) that are not hardware time-synchronized.
+- the application of the proposed algorithm on a set of sensors (camera, IMU) that are not hardware time-synchronized.

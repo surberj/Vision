@@ -70,7 +70,8 @@ r_vb_in_vicon_rovio = zeros(length(r_rovio),3);
 ang_vb_in_vicon_rovio = zeros(length(r_rovio),3);
 for i=1:length(r_rovio)
     r_vb_in_vicon_rovio(i,:) = r_vr_in_v + R_vr*r_rovio(i,:)';
-    ang_vb_in_vicon_rovio(i,:) = dcm2angle(R_vr*quat2dcm(quat_rovio(i,:)));
+    R_rb_tmp = quat2dcm(quat_rovio(i,:));
+    ang_vb_in_vicon_rovio(i,:) = dcm2angle(R_vr*R_rb_tmp);
 end
 
 r_vb_in_vicon_vicon = r_vicon;

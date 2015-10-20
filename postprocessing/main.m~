@@ -53,20 +53,15 @@ R_vr = R_vb*R_rb';
 
 
 % describe all signals wrt world frame
-% rovio: position:    r_rovio_in_vicon = R_vr * r_rovio
-%        orientation: ang_rovio_in_vicon = dcm3angle(R_vr * Rrb)
+% rovio: position:    ro_vicon = R_vr * r_rovio
+%        orientation: ang_vicon = dcm3angle(R_vr * Rrb)
 % vicon: position:    r_vicon
-%        orientation: ang_vicon = dcm3angle(R_vb)
+%        orientation: ang_world = dcm3angle(R_bv)
 R_wr = R_rw';
-r_rovio_in_vicon = zeros(length(r_rovio),3);
-ang_rovio_in_vicon = zeros(length(r_rovio),3);
 for i=1:length(r_rovio)
-    r_rovio_in_vicon(i,:) = R_vr*r_rovio(i,:)';
-    ang_rovio_in_vicon(i,:) = dcm2angle(R_vr*quat2dcm(ro_q(i,:)));
+    ro_world = R_wr*ro_rovio;
+    ro_ang = dcm2ang(
 end
-
-ang_vicon = zeros(length(r_vicon),3);
-[ang_vicon(:,1),ang_vicon(:,2),ang_vicon(:,3)] = quat2angle(gt_q);
 
 %% plot
 time_gt = ground_truth.rosbagTimestamp;
@@ -78,31 +73,31 @@ figure('Name','Rovio analysis','NumberTitle','off', ...
     'Position',[1 1 scrsz(3) scrsz(4)]);
 % 
 ha(1) = subplot(321);
-plot(time_gt,r_vicon(:,1))
+plot(time_gt,ground_truth.x)
 hold on
-plot(time_ro,r_rovio_in_vicon(:,1))
+plot(time_ro,-rovio.x)
 title('x tracking','FontSize',12)
-h_legend = legend('ground truth', 'rovio');
+h_legend = legend('ground truth', '- rovio');
 set(h_legend,'FontSize',8)
 xlabel('[s]','FontSize',12)
 ylabel('[m]','FontSize',12)
 grid on
 
 ha(2) = subplot(323);
-plot(time_gt,r_vicon(:,2))
+plot(time_gt,ground_truth.y)
 hold on
-plot(time_ro,r_rovio_in_vicon(:,2))
+plot(time_ro,-rovio.y)
 title('y tracking','FontSize',12)
-h_legend = legend('ground truth', 'rovio');
+h_legend = legend('ground truth', '- rovio');
 set(h_legend,'FontSize',8)
 xlabel('[s]','FontSize',12)
 ylabel('[m]','FontSize',12)
 grid on
 
 ha(3) = subplot(325);
-plot(time_gt,r_vicon(:,3))
+plot(time_gt,ground_truth.z)
 hold on
-plot(time_ro,r_rovio_in_vicon(:,3))
+plot(time_ro,rovio.z)
 title('z tracking','FontSize',12)
 h_legend = legend('ground truth', 'rovio');
 set(h_legend,'FontSize',8)
@@ -111,9 +106,9 @@ ylabel('[m]','FontSize',12)
 grid on
 
 ha(4) = subplot(322);
-plot(time_gt,ang_vicon(:,1))
+plot(time_gt,gt_r1)
 hold on
-plot(time_ro,ang_rovio_in_vicon(:,1))
+plot(time_ro,ro_r1)
 title('euler r1 tracking','FontSize',12)
 h_legend = legend('ground truth', 'rovio');
 set(h_legend,'FontSize',8)
@@ -122,9 +117,9 @@ ylabel('[rad]','FontSize',12)
 grid on
 
 ha(4) = subplot(324);
-plot(time_gt,ang_vicon(:,2))
+plot(time_gt,gt_r2)
 hold on
-plot(time_ro,ang_rovio_in_vicon(:,2))
+plot(time_ro,ro_r2)
 title('euler r2 tracking','FontSize',12)
 h_legend = legend('ground truth', 'rovio');
 set(h_legend,'FontSize',8)
@@ -133,9 +128,9 @@ ylabel('[rad]','FontSize',12)
 grid on
 
 ha(4) = subplot(326);
-plot(time_gt,ang_vicon(:,3))
+plot(time_gt,gt_r3)
 hold on
-plot(time_ro,ang_rovio_in_vicon(:,3))
+plot(time_ro,ro_r3)
 title('euler r3 tracking','FontSize',12)
 h_legend = legend('ground truth', 'rovio');
 set(h_legend,'FontSize',8)

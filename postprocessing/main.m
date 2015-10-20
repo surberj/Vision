@@ -50,14 +50,12 @@ r_rovio = [rovio.x,rovio.y,rovio.z];
 % rovio wrt vicon
 R_vr = R_vb*R_rb';
 
-
-
-% describe all signals wrt world frame
+% describe all signals wrt vicon frame
 % rovio: position:    r_rovio_in_vicon = R_vr * r_rovio
-%        orientation: ang_rovio_in_vicon = dcm3angle(R_vr * Rrb)
+%        orientation: ang_rovio_in_vicon = dcm3angle(R_vr * R_rb)
 % vicon: position:    r_vicon
 %        orientation: ang_vicon = dcm3angle(R_vb)
-R_wr = R_rw';
+
 r_rovio_in_vicon = zeros(length(r_rovio),3);
 ang_rovio_in_vicon = zeros(length(r_rovio),3);
 for i=1:length(r_rovio)

@@ -60,6 +60,11 @@ r_rb_in_r = r_rovio(ind_align_rovio,:)';
 R_vr = R_vb*R_rb';
 r_vr_in_v = r_vb_in_v - R_vr*r_rb_in_r;
 
+% check
+if norm(r_vr_in_v + R_vr*r_rb_in_r - r_vb_in_v) > 0.01
+    print('there seems to be something wrong with the rotations')
+end
+
 % describe all signals wrt vicon frame
 % rovio: position:    r_vb_in_vicon_rovio = r_vr_in_vicon + R_vr * r_rb_in_rovio
 %        orientation: ang_vb_in_vicon_rovio = dcm2angle(R_vr * R_rb)

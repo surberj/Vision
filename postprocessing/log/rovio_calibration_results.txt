@@ -1,0 +1,37 @@
+A1) rcars dataset, rcars calibration with distortion_model:equidistant
+
+compared_pose_pairs 1127 pairs
+absolute_translational_error.rmse 0.103961 m
+absolute_translational_error.mean 0.090810 m
+absolute_translational_error.median 0.074880 m
+absolute_translational_error.std 0.050611 m
+absolute_translational_error.min 0.005797 m
+absolute_translational_error.max 0.253372 m
+
+A2) rcars dataset, rcars calibration with distortion_model:plumb-bob
+diverging
+
+A3) rcars dataset, lucas calibration with distortion_model:equidistant
+compared_pose_pairs 1168 pairs
+absolute_translational_error.rmse 0.098169 m
+absolute_translational_error.mean 0.087139 m
+absolute_translational_error.median 0.082531 m
+absolute_translational_error.std 0.045210 m
+absolute_translational_error.min 0.008456 m
+absolute_translational_error.max 0.198826 m
+
+
+B1) euroc dataset, euroc calibration with distortion_model:equidistant
+diverging after 1 minute
+
+B2) euroc dataset, euroc calibration with distortion_model:radial-tangential
+diverging
+
+B3) euroc dataset, lucas calibration with distortion_model:equidistant
+compared_pose_pairs 2687 pairs
+absolute_translational_error.rmse 0.276683 m
+absolute_translational_error.mean 0.252372 m
+absolute_translational_error.median 0.230184 m
+absolute_translational_error.std 0.113410 m
+absolute_translational_error.min 0.044499 m
+absolute_translational_error.max 0.525844 m

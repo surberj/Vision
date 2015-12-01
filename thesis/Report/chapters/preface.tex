@@ -3,4 +3,43 @@
 %\chapter*{Vorwort}
 %\addcontentsline{toc}{chapter}{Vorwort}
 
-Bla bla \dots
+\begin{table}[ht]
+\centering
+\begin{tabular}{|p{7.0cm}|p{2.5cm}|p{2.5cm}|}
+\hline
+ & OKVIS & ROVIO \\
+\hline\hline
+ACCURACY & IJRR 1 & IJRR 1 \\
+ & IJRR 2 & - \\
+ & IJRR 3 & - \\
+ & - & EUROC slow \\
+\hline\hline
+Comp. Complexity & - & EUROC slow \\
+& IJRR 2? $O(M^3)$ & - \\
+\hline\hline
+Robustness: Illumination & - & - \\
+\hline
+Robustness: Dynamics & IJRR 1 & IJRR 1 \\
+ & - & EUROC slow \\
+\hline
+Robustness: Features & - & EUROC slow \\
+ & IJRR 2, Fig19, Fig20 ? & - \\
+\hline
+Robustness: Non-timesynchronized Hardware & - & EUROC slow \\
+ & - & mydata slow \\
+ & - & mydata fast \\
+\hline
+Robustness: Lower-quality IMU & - & - \\
+\hline
+Robustness: Lower-quality Camera & - & - \\
+\hline
+Robustness: Internal Calibration & - & - \\
+\hline
+Robustness: External Calibration & - & - \\
+\hline
+
+\end{tabular}
+\caption{The different datasets used for Comparison}
+\label{table:comparison}
+\end{table}
+

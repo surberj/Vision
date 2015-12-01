@@ -18,7 +18,7 @@ VI-Odometry Trajectory after alignment:
        \vec{q_{vi}} \vec{r_{vi}}
 \end{equation}
 
-Position Error
+Absolute Position Error
 
 \begin{equation}
        E_{trans} \left( n \right) = \left\Vert\left(\ r_{vi} \left( n \right) - r_{gt} \left( n \right) \right) \right\Vert_2
@@ -29,18 +29,18 @@ Position Error
 \end{equation}
 
 \begin{equation}
-       D_{vi} \left( n \right) = \sum_{n=1}^{N-1} \left\Vert\left(\ r_{vi} \left( n+1 \right) - r_{vi} \left( n \right) \right) \right\Vert_2
+       D_{vi} \left( n \right) = \sum_{\tilde{n}=0}^{n-1} \left\Vert\left(\ r_{vi} \left( \tilde{n}+1 \right) - r_{vi} \left( \tilde{n} \right) \right) \right\Vert_2
 \end{equation}
 
 \begin{equation}
-       D_{gt} \left( n \right) = \sum_{n=1}^{N-1} \left\Vert\left(\ r_{gt} \left( n+1 \right) - r_{gt} \left( n \right) \right) \right\Vert_2
+       D_{gt} \left( n \right) = \sum_{\tilde{n}=0}^{n-1} \left\Vert\left(\ r_{gt} \left( \tilde{n}+1 \right) - r_{gt} \left( \tilde{n} \right) \right) \right\Vert_2
 \end{equation}
 
 \begin{equation}
        E_{trans, perc} \left( n \right) = \frac{E_{trans} \left( n \right)}{D_{gt} \left( n \right)}
 \end{equation}
 
-Rotation Error
+Absolute Rotation Error
 
 \begin{equation}
        E_{rot} \left( n \right) = \arccos \left(\left( R_q\left(\vec{q}_{vi}\right) \vec{e_{x}} \right) \cdot \left( R_q\left(\vec{q}_{gt}\right) \vec{e_{x}} \right)\right)
@@ -74,21 +74,58 @@ Rotation Matrix:
 		\end{array} \right]
 \end{equation}
 
+Local Error
+
 \begin{equation}
-       \vec{q_{vi}} \vec{r_{vi}} \vec{q_{gt}} \vec{r_{gt}}
+LTE \left( F_i, D_{des} \right) = \frac{\left|D_{gt} \left( F_i, F_{i+\Delta i} \right) - D_{vi} \left( F_i, F_{i+\Delta i} \right)\right|}{D_{gt} \left( F_i, F_{i+\Delta i} \right)}
+\end{equation}
+
+with $ \Delta i $ such that $ D_{gt} \left( F_i, F_{i+\Delta i} \right) \geq D_{des} $
+
+\begin{equation}
+LOE \left( F_i, D_{des} \right) = \arccos \left(\left( R_{vi} \left(i\right)^T * R_{vi} \left(i+\Delta i\right) * \vec{e_{x}} \right) \cdot \left( R_{gt} \left(i\right)^T * R_{gt} \left(i+\Delta i\right) * \vec{e_{x}} \right)\right)
+\end{equation}
+
+\begin{equation}
+       D_{gt} \left( F_i, F_{i+\Delta i} \right) = \sum_{k=i}^{i+\Delta i-1} \left\Vert\left(\ r_{gt} \left( k+1 \right) - r_{gt} \left( k \right) \right) \right\Vert_2
+\end{equation}
+
+\begin{equation}
+       D_{vi} \left( F_i, F_{i+\Delta i} \right) = \sum_{k=i}^{i+\Delta i-1} \left\Vert\left(\ r_{vi} \left( k+1 \right) - r_{vi} \left( k \right) \right) \right\Vert_2
 \end{equation}
 
 
 
-\begin{tikzpicture}
-% coordinate frame i
-  \draw[->] (xyz cs:x=0) -- (xyz cs:x=1) node[above] {$x$};
-  \draw[->] (xyz cs:y=0) -- (xyz cs:y=1) node[right] {$z$};
-  \draw[->] (xyz cs:z=0) -- (xyz cs:z=1) node[above] {$y$};
+Global Error
+
+\begin{equation}
+GTE_x \left( F_i \right) = \left|x_{gt} \left( i \right) - x_{vi} \left( i \right)\right|
+\end{equation}
+
+\begin{equation}
+GOE_{\phi} \left( F_i \right) = \left| \phi_{gt} \left( i \right) - \phi_{vi} \left( i \right)\right|
+\end{equation}
 
 
-%  \node[fill,circle,inner sep=1.5pt,label={left:$J$}] at (cs:x=0) {};
-\end{tikzpicture}
+
+
+
+
+\begin{equation}
+       \vec{q_{vi}} \vec{r_{vi}} \vec{q_{gt}} \vec{r_{gt}}
+\end{equation}
+
+Computational Complexity:
+
+Processing time for new image.
+
+Dependency on parameter:
+Okvis: M = number of keyframes kept: $ complexity \sim O(M^3) $
+
+
+
+
+
 
 
 

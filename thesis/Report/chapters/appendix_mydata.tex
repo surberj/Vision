@@ -1,7 +1,7 @@
 \chapter{}\label{sec:appendix_mydata}
 
 \begin{figure}[h]
-  \begin{subfigure}[b]{0.42\textwidth}
+  \begin{subfigure}[b]{0.40\textwidth}
     \includegraphics[width=\textwidth]{images/vi_bluefox.JPG}
     \caption{}
   \end{subfigure}
@@ -29,12 +29,12 @@
     \includegraphics[width=\textwidth]{images/slow/slow_roe.png}
     \caption{}
   \end{subfigure}
-   \caption{ROVIO results on the slow dataset with dynamics of $1.5\frac{m}{s}$ and $1\frac{rad}{s}$. ROVIO's tracking performance on the VI-sensor data (hardware-wise time synchronized) is better than on the data of the bluefox camera and the VI-sensor-IMU (hardware-wise non time synchronized). ROVIO is principally able to track for both the time synchronized and the non time synchronized data.}
+   \caption{ROVIO results on the slow dataset with dynamics of $1.5\frac{m}{s}$ and $1\frac{rad}{s}$. (a) shows the sensor setup with bluefox camera and VI-sensor. (b) shows ROVIO's tracking performance for the hardware-wise time synchronized data (VI-sensor) and for the non time synchronized data (bluefox and VI-sensor-IMU). Regarding global accuracy (c and d) and local accuracy (e and f) ROVIO is performing better on the time synchronized than on the non time synchronized data. ROVIO is principally able to track the robot for both the time synchronized and the non time synchronized data.}
    \label{pics:appendix_slow}
 \end{figure}
 
 \begin{figure}[h]
-  \begin{subfigure}[b]{0.42\textwidth}
+  \begin{subfigure}[b]{0.40\textwidth}
     \includegraphics[width=\textwidth]{images/vi_bluefox.JPG}
     \caption{}
   \end{subfigure}
@@ -62,6 +62,6 @@
     \includegraphics[width=\textwidth]{images/fast_fixed/fast_fixed_roe.png}
     \caption{}
   \end{subfigure}
-   \caption{ROVIO results on the fast dataset with dynamics of $2.5\frac{m}{s}$ and $5\frac{rad}{s}$ and fixed extrinsics between camera and IMU. As demonstrated in section \ref{sec:timesync} ROVIO is diverging on this dataset when the extrinsics between camera and IMU are estimated online. By fixing the extrinsics on the hardware-wise non time synchronized setup ROVIO is not diverging anymore. The global tracking performance is still worse than the one of ROVIO running on the VI-sensor data, the local tracking performance is even slightly better than the one of ROVIO running on the VI-sensor data. This dataset is lying at the dynamic limits of ROVIO and the local accuracy on both the time synchronized and non time synchronized data is low.}
+   \caption{ROVIO results on the fast dataset with dynamics of $2.5\frac{m}{s}$ and $5\frac{rad}{s}$ and fixed extrinsics between camera and IMU. (a) shows the sensor setup with bluefox camera and VI-sensor. In section \ref{sec:timesync} it is demonstrated that ROVIO is diverging on this fast dataset when the extrinsics between camera and IMU are estimated online. By fixing the extrinsics on the hardware-wise non time synchronized setup ROVIO is not diverging anymore. (b) shows the tracking performance of ROVIO for the time synchronized data (VI-sensor) and the non time synchronized data (bluefox and VI-sensor-IMU). The global accuracy (c and d) is better for the time synchronized data. The local accuracy (e and f) is surprisingly slightly better for the non time synchronized data, but very low for both setup. This dataset is lying at the dynamic limits of ROVIO and all errors are relatively high.}
    \label{pics:appendix_fast}
 \end{figure}

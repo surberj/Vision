@@ -10,7 +10,7 @@ ROVIO stands for robust visual-inertial odometry and it is based on an extended 
 
 \begin{figure}
    \centering
-   \includegraphics[width=0.75\textwidth]{images/rovio_frontend.png}
+   \includegraphics[width=0.9\textwidth]{images/rovio_frontend.png}
    \caption{ROVIO visualization during operation: On the left side the input image with the extracted and reprojected landmarks is shown, on the right side the fixed inertial frame (large frame), the estimated body frame (small frame) and the landmarks (white dots) with uncertainty (green lines) are visualized.}
    \label{pics:rovio_frontend}
 \end{figure}
@@ -28,8 +28,8 @@ OKVIS stands for optimal keyframe-based visual-inertial SLAM and achieves the lo
 
 \begin{figure}[h]
    \centering
-   \includegraphics[width=0.5\textwidth]{images/okvis_frontend.png}
-   \caption{OKVIS visualization during operation: On top we can see the latest keyframe, on the bottom the current frame. Extracted features are visualized with circles, the green lines denote matching pairs. On the right side all landmarks are visualized, the ones currently used in the optimization are highlited in green.}
+   \includegraphics[width=0.6\textwidth]{images/okvis_frontend.png}
+   \caption{OKVIS visualization during operation: For the latest keyframe (top) and the current frame (bottom) the extracted features are visualized with circles and the green lines denote matching pairs. Red circles stand for unmatched features, blue circles for features matched to another keyframe.}
    \label{pics:okvis_frontend}
 \end{figure}
 
@@ -116,18 +116,20 @@ where $\phi$, $\theta$ and $\psi$ denote the roll, pitch and yaw angle, respecti
 \begin{figure}
   \hspace*{1cm}
   \begin{subfigure}[b]{0.3\textwidth}
+    \captionsetup{skip=6pt}
     \includegraphics[width=\textwidth]{images/ape_frames_2.png}
-    \caption{}
+    \caption{global accuracy}
     \label{fig:3}
   \end{subfigure}
   \hfill
   \begin{subfigure}[b]{0.28\textwidth}
+    \captionsetup{skip=6pt}
     \includegraphics[width=\textwidth]{images/rpe_frames_2.png}
-    \caption{}
+    \caption{local accuracy}
     \label{fig:4}
   \end{subfigure}
   \hspace*{1cm}
-\caption{To describe global accuracy (a) the true (black) and estimated (red) trajectories are aligned in the beginning and the error describes the absolute difference between ground truth and estimation. To describe local accuracy (b) the relative changes between two frames given by the ground truth and the estimation are compared.}
+\caption{(a) visualizes the global accuracy: The trajectories are aligned at the first frame $F_{0}$ and the absolute difference between ground truth and estimation at time $n$ defines the global accuracy. (b) visualizes the local accuracy: The relative changes between two frames $F_i$ and $F_{i+\Delta i}$ given by the ground truth and the estimation are compared.}
 \label{pics:absolute_relative}
 \end{figure}
 

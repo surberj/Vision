@@ -9,7 +9,7 @@ One of the key challenges on the way towards autonomous robot navigation is loca
 \begin{figure}[h]
    \centering
    \includegraphics[width=0.5\textwidth]{images/state_of_the_art.png}
-   \caption{Main work within the field of visual localization. The subfield of visual-inertial localization can be divided into two principially different approaches, the filtering-based and the keyframe-based approach.}
+   \caption{The field of visual localization and the subfield of visual-inertial localization with important published algorithms.}
    \label{pics:state_of_the_art}
 \end{figure}
 % SVO \cite{forster2014svo}
@@ -25,17 +25,19 @@ In addition to the filtering-based and keyframe-based approach, an implementatio
 
 \begin{figure}
   \begin{subfigure}[b]{0.4\textwidth}
+    \captionsetup{skip=6pt}
     \includegraphics[width=\textwidth]{images/filteringbased_2.png}
-    \caption{}
+    \caption{filtering-based}
     \label{fig:1}
   \end{subfigure}
   \hfill
   \begin{subfigure}[b]{0.4\textwidth}
+    \captionsetup{skip=6pt}
     \includegraphics[width=\textwidth]{images/keyframebased_2.png}
-    \caption{}
+    \caption{keyframe-based}
     \label{fig:2}
   \end{subfigure}
-\caption{The filtering-based approach (a) propagates the robot pose between two frames (triangles) based on the IMU data and updates this prior belief according to the landmark (red dots) observation of the camera. Like that the pose of a past frame is not corrected based on the new observation. The keyframe-based approach (b) performs a nonlinear optimization on the IMU data and camera observations of a set of past keyframes. Like that the pose of a past frame will be corrected based on a new observation.}
+\caption{(a) shows the filtering-based principle of localization: The robot pose is propagated between two camera frames based on the IMU measurements and updated based on the cameras landmark observations. The pose of a past frame is not corrected based on a new observation. (b) shows the keyframe-based approach to localization: The robot pose is estimated by a nonlinear optimization based on the IMU data and the landmark observations of a \textit{set} of frames. With this approach the pose of a past frame will be corrected based on a new observation.}
 \label{pics:filtering_keyframe}
 \end{figure}
 

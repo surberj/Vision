@@ -99,13 +99,13 @@ The world-x and world-y errors (figure \ref{pics:ijrr_abs_separate} d and e) are
 Main results out of this analysis are: 1) OKVIS shows superior performance regarding global accuracy than ROVIO, and 2) ROVIO is prone to drift, especially in yaw, with a yaw-error of 45 degrees after 1000 $m$ of travelled distance.
 
 The main reasons for the superior performance of OKVIS are linearization errors within ROVIO and the filtering-based property of not correcting a past estimate based on a new observation (see section \ref{sec:rovio}). 
-A future way of approaching the drift issue could be to perform a global optimization in a secondary module, which takes the output of the algorithm and performs a computationally more expensive optimization on a slower rate and feeds its result back. This secondary module could also detect loop closures and increase the global accuracy significantly. Another easier way of reducing the drift issue would be to include additional sensor information of a magnetometer or even GPS into the estimation. Using only a magnetometer could decrease the yaw-drift already significantly.
+A future way of approaching the drift issue could be to perform a global optimization in a secondary module, which takes the output of the algorithm and performs a computationally more expensive optimization on a slower rate and feeds its result back. This secondary module could also detect loop closures and increase the global accuracy significantly. Another easier way of reducing the drift issue would be to include additional sensor information of a magnetometer or even GPS into the estimation. Using only a magnetometer would make yaw observable and could decrease the yaw-drift significantly.
 
 
 \subsection{Local accuracy}
 \label{sec:ijrr_local}
 
-Over short distances the difference between the two algorithms is very small. Figure \ref{pics:ijrr_rel} shows the relative translation and orientation errors for the long indoor trajectory. The relative translation error of ROVIO is a bit higher than the one of OKVIS but in the same order of magnitude: After a travelled distance of 1 $m$, both algorithms have a median relative translation error of approximately 2 $cm$ (2 $\%$). The relative orientation error is very similar and approximately 0.6 degrees after a travelled distance of 1 $m$.
+Over short distances, the difference between the two algorithms is very small. Figure \ref{pics:ijrr_rel} shows the relative translation and orientation errors for the long indoor trajectory. The relative translation error of ROVIO is a bit higher than the one of OKVIS but in the same order of magnitude: after a travelled distance of 1 $m$, both algorithms have a median relative translation error of approximately 2 $cm$ (2 $\%$). The relative orientation error is very similar and approximately 0.6 degrees after a travelled distance of 1 $m$. \\
 
 \begin{figure}[h]
   \begin{subfigure}[b]{0.48\textwidth}
@@ -123,19 +123,19 @@ Over short distances the difference between the two algorithms is very small. Fi
    \label{pics:ijrr_rel}
 \end{figure}
 
-A local accuracy in this order of magnitude is probably the best one can get out of a visual-inertial localization algorithm at the moment. The presented results on local accuracy are hard to compare with the literature because such in depth analyses of local errors have never been published on other promising visual-inertial localization implementations. The accuracies are probably in a order of magnitude, which allow subsequent algorithms like dense reconstruction or object recognition to work reasonably. For direct manipulation tasks the accuracies are probably too bad and a subsequent estimation technique for relative pose estimation between the robot and a target needs to be added.
+The presented results on local accuracy are hard to compare with the literature because such in depth analyses of local errors have never been published on other promising visual-inertial localization implementations. The accuracy is in a order of magnitude, which allow subsequent algorithms like dense reconstruction or object recognition to work reasonably. For direct manipulation tasks, the accuracies are probably too bad and a subsequent estimation technique for relative pose estimation between the robot and a target needs to be added.
 
 
 \subsection{Computational complexity}
 \label{sec:ijrr_complexity}
 
-As mentioned in sections \ref{sec:rovio} and \ref{sec:okvis} ROVIO and OKVIS differ in their estimation techniques and OKVIS is working with more information than ROVIO. Parts of the algorithms like the data acquisition or feature extraction are in the same order of computational complexity for the two algorithms but the estimation itself of OKVIS is clearly more demanding. We have not been able to run OKVIS on the same machine as ROVIO and therefore a direct comparison of computational complexity can not been demonstrated within this report. Working with a maximum number of 25 features the processing time per frame of ROVIO on a 2.5GHz Intel Core macbook was 10 $ms$ per frame, which is rather lightweight. We know of OKVIS that is computationally more demanding but still able to run in real-time on a standard laptop processor.
+As mentioned in sections \ref{sec:rovio} and \ref{sec:okvis}, ROVIO and OKVIS differ in their estimation techniques and OKVIS is working with more information than ROVIO. Parts of the algorithms like the data acquisition or feature extraction are in the same order of computational complexity for the two algorithms. But the estimation itself of OKVIS is clearly more demanding. We have not been able to run OKVIS on the same machine as ROVIO and therefore, a direct comparison of computational complexity can not been demonstrated within this report. Working with a maximum number of 25 features, the processing time per frame of ROVIO on a 2.5GHz Intel Core macbook was 10 $ms$ per frame, which is rather lightweight. We know OKVIS being computationally more demanding, but still able to run in real-time on a standard laptop processor.
 
 
 \section{Evaluation of ROVIO on complementary indoor dataset}
 \label{sec:euroc}
 
-The presented results have been derived on one specific dataset. To get a better impression for the presented numbers this section will show ROVIO results on a second dataset with other characteristics. It has also been collected with the VI-sensor (figure \ref{pics:visensor} a) and contains a short indoor trajectory with a travelled distance of 60 $m$. The dynamics on this dataset are slower with 1 $\frac{m}{s}$ and less than 1 $\frac{rad}{s}$. The camera was moved in direction of all body axes, not only in direction of the optical axis and the data looks like a slowly performed random walk, see figure \ref{pics:euroc} a. \\
+The presented results have been derived on one specific dataset. To get a better impression for the presented numbers, this section will show ROVIO results on a second dataset with other characteristics. It has also been collected with the VI-sensor (figure \ref{pics:visensor} a) and contains a short indoor trajectory with a travelled distance of 60 $m$. The dynamics on this dataset are slower with 1 $\frac{m}{s}$ and less than 1 $\frac{rad}{s}$. The camera was moved in direction of all body axes, not only in the direction of the optical axis and the data looks like a slowly performed random walk, see figure \ref{pics:euroc} a. \\
 
 \begin{figure}[h]
   \begin{subfigure}[b]{0.45\textwidth}
@@ -171,22 +171,22 @@ The presented results have been derived on one specific dataset. To get a better
 
 Looking at the global accuracy (figure \ref{pics:euroc} b, c and d) with an absolute translation error of 10-20 $cm$ and $1$ degree after a travelled distance of 50 $m$, we notice that the observed drift issues in section \ref{sec:ijrr} are not obviously visible over these short distances. Especially in yaw we can not register clear drift on this short sequence. \\
 
-Regarding local accuracy (figure \ref{pics:euroc} e and f) we notice a clearly higher relative translation error with 3-4 $cm$ compared with 2 $cm$ for the long trajectory after 1 $m$ of travelled distance. The relative orientation error of 0.6 degrees is similar to the one of the long trajectory. The reason why local accuracy is better on the long trajectory lies probably in the higher dynamics within that set. The IMU measurements are less noisy for higher excitements and two frames with a travelled distance of 1 $m$ in between have been captured nearer in time. \\
+Regarding local accuracy (figure \ref{pics:euroc} e and f) a relative translation error of 3-4 $cm$ after 1 $m$ of travelled distance can be observed. This is significantly higher compared with 2 $cm$ for the long trajectory. The relative orientation error of 0.6 degrees is similar to the one of the long trajectory. The better results for the long trajectory are probably caused by the higher dynamics within that set: The IMU measurements are less noisy for higher excitements and two frames with a travelled distance of 1 $m$ in between have been captured nearer in time. \\
 
-For a task like dense reconstruction or maintenance this second dataset is probably more representative as a robot won't move with high speeds during this kind of operation. Therefore relative errors of 3-4 $cm$ and 0.6 degrees have to be expected for a travelled distance of 1 $m$.
+For a task like dense reconstruction or maintenance, this second dataset is more representative than the long trajectory, as a robot won't move with high speeds during this kind of operation. Therefore relative errors of 3-4 $cm$ and 0.6 degrees have to be expected for a travelled distance of 1 $m$.
 
 \section{Towards a non time synchronized sensor system}
 \label{sec:timesync}
 
-All the presented results have been derived on data collected with the VI-sensor (figure \ref{pics:visensor} a). The VI-sensor is hardware-wise time synchronized, which means that the camera image capture is triggered by the IMU. Thanks to this time synchronization the data of both sensors arrives on the visual-inertial localization algorithm accurately time-aligned. For many applications it will be an important question if a visual-inertial localization algorithm is also able to run with a more generic sensor system that does not perform a hardware time synchronization. \\
+All the presented results have been derived on data collected with the VI-sensor (figure \ref{pics:visensor} a). The VI-sensor is hardware-wise time synchronized, which means that the camera image capture is triggered by the IMU. Thanks to this time synchronization, the data of both sensors arrives on the visual-inertial localization algorithm accurately time-aligned. For many applications it is an important question, if a visual-inertial localization algorithm is also able to run with a more generic sensor system that does not perform a hardware time synchronization. \\
 
-Within the scope of this report we will present two evaluations towards the question if ROVIO is able to run with a sensor system, which is not hardware-wise time synchronized. In section \ref{sec:timesync_artificial} data of the VI-sensor is passed to ROVIO, artificially modified with an added bias on the IMU timestamp. Section \ref{sec:timesync_real} will show experimental results by comparing ROVIO once running on a hardware-wise time synchronized and once on a hardware-wise non time synchronized sensor system.
+Within the scope of this report, two evaluations will be presented towards the question, if ROVIO is able to run with a sensor system, which is not hardware-wise time synchronized. In section \ref{sec:timesync_artificial}, data of the VI-sensor is passed to ROVIO, artificially modified with an added bias on the IMU timestamp. Section \ref{sec:timesync_real} shows experimental results by comparing ROVIO running on a time synchronized and on a non time synchronized sensor system.
 
 
 \subsection{Artificial bias on IMU timestamp}
 \label{sec:timesync_artificial}
 
-By adding an artificial bias to the IMU timestamp, ROVIO has to deal with an inaccuracy, which is not modelled in the filter assumptions. Like that performance decreases and the filter eventually diverges when the bias gets too large. To get an impression how robustly the system behaves under errors in the timestamps we took the hardware-wise time synchronized VI-sensor data and added an artificial bias on the IMU timestamp to observe ROVIO's performance. \\
+By adding an artificial bias to the IMU timestamp, ROVIO has to deal with an inaccuracy, which is not modelled in the filter assumptions. Like that, performance decreases and the filter diverges when the bias gets too large. To get an impression, how robustly the system behaves under errors in the timestamps, hardware-wise time synchronized VI-sensor data was taken and an artificial bias on the IMU timestamp was added. \\
 
 \begin{figure}[h]
   \begin{subfigure}[b]{0.48\textwidth}
@@ -202,14 +202,16 @@ By adding an artificial bias to the IMU timestamp, ROVIO has to deal with an ina
    \label{pics:timesync_artificial}
 \end{figure}
 
-Figure \ref{pics:timesync_artificial} shows the mean absolute translation and orientation errors of ROVIO for artificial timestamp biases between 0 $ms$ (original mode) and 100 $ms$ in steps of 10 $ms$. The evaluation is performed on the second dataset, introduced in section \ref{sec:euroc}. The first observation is that, for this slow dynamic dataset, ROVIO is only diverging with an artificial timestamp bias of 100 $ms$ and stays quite accurate untill 50 $ms$. The second observation is that it is manly the online estimation of the translational and rotational extrinsics between camera and IMU, which cause the filter to diverge. By fixing these extrinsics and reducing some degrees of freedom within the filter state, ROVIO is even more robust regarding a bias on the IMU timestamp. Fixing the camera-IMU extrinsics can only help if an accurate calibration is available and the extrinsics stay constant during operation since errors within the extrinsics will directly effect the accuracy.
+Figure \ref{pics:timesync_artificial} shows the mean absolute translation error and the mean absolute orientation error of ROVIO for artificial timestamp biases between 0 $ms$ (original mode) and 100 $ms$, in steps of 10 $ms$. The evaluation is performed on the second dataset, introduced in section \ref{sec:euroc}. 
+
+The first observation is that, for this slow dynamic dataset, ROVIO is only diverging with an artificial timestamp bias of 100 $ms$ and stays quite accurate until 50 $ms$. The second observation is, that it is mainly the online estimation of the translational and rotational extrinsics between camera and IMU, which cause the filter to diverge. By fixing these extrinsics and reducing some degrees of freedom within the filter state, ROVIO is even more robust regarding a bias on the IMU timestamp. Fixing the camera-IMU extrinsics can only help if an accurate calibration is available and the extrinsics stay constant during operation since errors within the extrinsics will directly effect the accuracy.
 
 
 
 \subsection{ROVIO results with and without time synchronization}
 \label{sec:timesync_real}
 
-To test and compare ROVIO on two sensor systems with and without time synchronization the sensor setup shown in figure \ref{pics:vi_bluefox} has been designed. It consists out of the VI-sensor and an added bluefox 2.0 camera, which has the same characteristics and the same field of view as the camera on the VI-sensor. With this setup we are able to compare ROVIO running with the hardware-wise time synchronized data of the VI-sensor with ROVIO running on the hardware-wise non time synchronized data of the bluefox camera and the VI-sensor-IMU. We collected two datasets with different dynamics and vicon ground truth, the first contains slow motions (1.5 $\frac{m}{s}$ and 1 $\frac{rad}{s}$) the second contains fast and shaky dynamics (2.5 $\frac{m}{s}$ and 5 $\frac{rad}{s}$). For both datasets the camera was moved hand-held, the camera was facing in direction of movement and a distance of 60 $m$ was collected, which was three loops within the vicon room. \\
+To test and compare ROVIO on two sensor systems with and without time synchronization, the sensor setup shown in figure \ref{pics:vi_bluefox} has been designed. It consists out of the VI-sensor and an added bluefox 2.0 camera, which has the same characteristics and the same field of view as the camera on the VI-sensor. With this setup, ROVIO running with the hardware-wise time synchronized data of the VI-sensor can be compared with ROVIO running on the hardware-wise non time synchronized data of the bluefox camera and the VI-sensor-IMU. Two datasets with different dynamics have been collected. The first contains slow motions (1.5 $\frac{m}{s}$ and 1 $\frac{rad}{s}$), the second contains fast and shaky dynamics (2.5 $\frac{m}{s}$ and 5 $\frac{rad}{s}$). Ground truth is given by a vicon system. For both datasets the camera was hand-held and facing in direction of movement. A distance of 60 $m$ was collected for each set, which corresponds to three loops within the vicon room. \\
 
 \begin{figure}[h]
    \centering
@@ -218,7 +220,7 @@ To test and compare ROVIO on two sensor systems with and without time synchroniz
    \label{pics:vi_bluefox}
 \end{figure}
 
-For the dataset with slow dynamics (figure \ref{pics:timesync_slow}) ROVIO is principally able to track the motion of the sensor system for both the hardware-wise time synchronized (VI-sensor) and the non time synchronized (bluefox and VI-sensor-IMU) data. Not too surprisingly the tracking performance of ROVIO running on the VI-sensor data is more accurate (see also appendix \ref{pics:appendix_slow}) but the important result is that there seems not to be a larger issue with the missing hardware time synchronization for ROVIO if the robot is moving with slow motions. \\
+For the dataset with slow dynamics (figure \ref{pics:timesync_slow}), ROVIO is principally able to track the motion of the sensor system for both the hardware-wise time synchronized data (VI-sensor) and the non time synchronized data (bluefox and VI-sensor-IMU). Not too surprisingly, the tracking performance of ROVIO running on the VI-sensor data is more accurate (see also appendix \ref{pics:appendix_slow}). The more important result is, that ROVIO, running with the non time synchronized setup, is also able to track these slow motions. \\
 
 \begin{figure}
   \begin{subfigure}[b]{0.46\textwidth}
@@ -234,7 +236,7 @@ For the dataset with slow dynamics (figure \ref{pics:timesync_slow}) ROVIO is pr
    \label{pics:timesync_slow}
 \end{figure}
 
-For the dataset with fast motions the outcome is different (figure \ref{pics:timesync_fast} a). ROVIO running with the non time synchronized data is diverging on this set. At the same time ROVIO running with the time synchronized data is not diverging - comparing with the slow dataset the errors are significantly increasing (see also appendix \ref{pics:appendix_fast}), but tracking is not lost. If we fix the extrinsics between camera and IMU and hence reduce the number of degrees of freedom in the filter state, ROVIO can be prevented from divergence also on this fast set (figure \ref{pics:timesync_fast} b). \\
+For the dataset with fast motions, the outcome is different (figure \ref{pics:timesync_fast} a). ROVIO running with the non time synchronized data is diverging on this set. ROVIO running with the time synchronized data is not diverging; comparing with the slow dataset the errors are significantly increasing (see also appendix \ref{pics:appendix_fast}), but tracking is not lost. If we fix the extrinsics between camera and IMU and hence reduce the number of degrees of freedom in the filter state, ROVIO can be prevented from divergence also on this fast dataset (figure \ref{pics:timesync_fast} b). \\
 
 \begin{figure}
   \begin{subfigure}[b]{0.48\textwidth}

@@ -89,7 +89,7 @@ The world-x and world-y errors (figure \ref{pics:ijrr_abs_separate} d and e) are
   \end{subfigure}
   \hfill
   \begin{subfigure}[b]{0.48\textwidth}
-    \includegraphics[width=\textwidth]{images/ijrr/ate_z_2.png}
+    \includegraphics[width=\textwidth]{images/ijrr/ate_z.png}
     \caption{}
   \end{subfigure}
    \caption{The absolute errors for the separated axes: roll (a) and pitch (b) stay bounded and below 1 degree for both algorithms over the whole sequence. Yaw (c) is drifting over time and has the main contribution to the absolute orientation error. The world-x (d) and world-y (e) errors are mainly driven by yaw and strongly dependent on the data. The world-z error (f) of OKVIS after 1000 $m$ is three times lower than the one of ROVIO.}
@@ -119,7 +119,7 @@ Over short distances, the difference between the two algorithms is very small. F
     \caption{}
     \label{fig:2}
   \end{subfigure}
-   \caption{The relative translation error (a) and the relative orientation error (b) over the travelled distance for the two algorithms in direct comparison: for both algorithms, the relative translation error is approximately 2 $cm$ after a travelled distance of 1 $m$. The absolute orientation error is approximately 0.6 degrees after 1 $m$ for both algorithms.}
+   \caption{The relative translation error (a) and the relative orientation error (b) over the travelled distance for the ROVIO and OKVIS in direct comparison: for both algorithms, the relative translation error is approximately 2 $cm$ after a travelled distance of 1 $m$. The absolute orientation error is approximately 0.6 degrees after 1 $m$ for both algorithms. The small dots on top of the figures denote outliers.}
    \label{pics:ijrr_rel}
 \end{figure}
 
@@ -135,7 +135,7 @@ As mentioned in sections \ref{sec:rovio} and \ref{sec:okvis}, ROVIO and OKVIS di
 \section{Evaluation of ROVIO on complementary indoor dataset}
 \label{sec:euroc}
 
-The presented results have been derived on one specific dataset. To get a better impression for the presented numbers, this section will show ROVIO results on a second dataset with other characteristics. It has also been collected with the VI-sensor (figure \ref{pics:visensor} a) and contains a short indoor trajectory with a travelled distance of 60 $m$. The dynamics on this dataset are slower with 1 $\frac{m}{s}$ and less than 1 $\frac{rad}{s}$. The camera was moved in direction of all body axes, not only in the direction of the optical axis and the data looks like a slowly performed random walk, see figure \ref{pics:euroc} a. \\
+The presented results have been derived on one specific dataset. To get a better impression for the presented numbers, this section will show ROVIO results on a second dataset with other characteristics, Burri et al., \cite{burri2015euroc}. It has also been collected with the VI-sensor (figure \ref{pics:visensor} a) and contains a short indoor trajectory with a travelled distance of 60 $m$. The dynamics on this dataset are slower with 1 $\frac{m}{s}$ and less than 1 $\frac{rad}{s}$. The camera was moved in direction of all body axes, not only in the direction of the optical axis and the data looks like a slowly performed random walk, see figure \ref{pics:euroc} a. \\
 
 \begin{figure}[h]
   \begin{subfigure}[b]{0.45\textwidth}

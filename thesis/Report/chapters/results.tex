@@ -1,7 +1,7 @@
 \chapter{Results and Discussion}
 \label{sec:results}
 
-We present three different evaluations: A direct comparison between ROVIO and OKVIS on a long dataset collected indoors is shown in section \ref{sec:ijrr}. It will demonstrate performance of the two algorithms and reveals drift issues. In section \ref{sec:euroc}, ROVIO results on a second complementary dataset with slower dynamics are presented. They emphasize that accuracy is dependent on the dataset. Finally, the question, if ROVIO is able to run with a generic sensor system, is approached in section \ref{sec:timesync}.
+We present three different evaluations: A direct comparison between ROVIO and OKVIS on a long dataset collected indoors is shown in section \ref{sec:ijrr}, which demonstrates performance of the two algorithms and reveals drift issues. In section \ref{sec:euroc}, ROVIO results on a second complementary dataset with slower dynamics are presented, emphasizing that accuracy is dependent on the dataset. Finally, the question, if ROVIO is able to run with a generic sensor system, is approached in section \ref{sec:timesync}.
 
 \section{Comparison of ROVIO and OKVIS on long indoor dataset}
 \label{sec:ijrr}
@@ -54,7 +54,7 @@ The absolute orientation error after a travelled distance of 1000 $m$ of ROVIO i
     \caption{}
     \label{fig:2}
   \end{subfigure}
-   \caption{The absolute translation error (a) and the absolute orientation error (b) over the travelled distance for the two algorithms in direct comparison: After a travelled distance of 1000 $m$, the absolute translation error of ROVIO is 3 times higher than the one of OKVIS, the absolute orientation error is 10 times higher.}
+   \caption{The absolute translation error (a) and the absolute orientation error (b) for the two algorithms in direct comparison: errors after a certain travelled distance are described with median value, 25 and 75 percentiles. After 1000 $m$, the absolute translation error of ROVIO is approximately 2.5 $m$ and 3 times higher than the one of OKVIS, the absolute orientation error is 45 degrees and 10 times higher.}
    \label{pics:ijrr_abs}
 \end{figure}
 
@@ -92,7 +92,7 @@ The world-x and world-y errors (figure \ref{pics:ijrr_abs_separate} d and e) are
     \includegraphics[width=\textwidth]{images/ijrr/ate_z_2.png}
     \caption{}
   \end{subfigure}
-   \caption{The absolute errors for the separated axes: Roll (a) and pitch (b) stay bounded and below 1 degree for both algorithms over the whole sequence. Yaw (c) is drifting over time and has the main contribution to the absolute orientation error. The world-x (d) and world-y (e) errors are mainly driven by yaw and strongly dependent on the data. The world-z error (f) of OKVIS after 1000 $m$ is three times lower than the one of ROVIO.}
+   \caption{The absolute errors for the separated axes: roll (a) and pitch (b) stay bounded and below 1 degree for both algorithms over the whole sequence. Yaw (c) is drifting over time and has the main contribution to the absolute orientation error. The world-x (d) and world-y (e) errors are mainly driven by yaw and strongly dependent on the data. The world-z error (f) of OKVIS after 1000 $m$ is three times lower than the one of ROVIO.}
    \label{pics:ijrr_abs_separate}
 \end{figure}
 
@@ -119,7 +119,7 @@ Over short distances, the difference between the two algorithms is very small. F
     \caption{}
     \label{fig:2}
   \end{subfigure}
-   \caption{The relative translation error (a) and the relative orientation error (b) for the two algorithms in direct comparison: After a travelled distance of 1 $m$, the relative translation error of ROVIO is a bit higher than the one of OKVIS, but in the same order of magnitude. The absolute orientation error is similar for both algorithms.}
+   \caption{The relative translation error (a) and the relative orientation error (b) over the travelled distance for the two algorithms in direct comparison: for both algorithms, the relative translation error is approximately 2 $cm$ after a travelled distance of 1 $m$. The absolute orientation error is approximately 0.6 degrees after 1 $m$ for both algorithms.}
    \label{pics:ijrr_rel}
 \end{figure}
 
@@ -165,13 +165,13 @@ The presented results have been derived on one specific dataset. To get a better
     \includegraphics[width=\textwidth]{images/euroc/roe.png}
     \caption{}
   \end{subfigure}
-   \caption{ROVIO performance on second dataset: The absolute translation error (b) lies between 10 $cm$ and 20 $cm$ after 50 $m$ of travelled distance and the absolute orientation error (c) after 50 $m$ is around 1 degree. The major contribution to the absolute orientation error is coming from the absolute yaw error (d). The local translation error (e) with 3-4 $cm$ after 1 $m$ is higher for this dataset than for the long trajectory and the local orientation error (f) with 0.6 degrees after 1 $m$ is similar to the long trajectory.}
+   \caption{ROVIO performance on second dataset: the absolute translation error (b) lies between 10 $cm$ and 20 $cm$ after 50 $m$ of travelled distance and the absolute orientation error (c) after 50 $m$ is around 1 degree. The major contribution to the absolute orientation error is coming from the absolute yaw error (d). The local translation error (e) with 3-4 $cm$ after 1 $m$ is higher for this dataset than for the long trajectory and the local orientation error (f) with 0.6 degrees after 1 $m$ is similar to the long trajectory.}
    \label{pics:euroc}
 \end{figure}
 
 Looking at the global accuracy (figure \ref{pics:euroc} b, c and d) with an absolute translation error of 10-20 $cm$ and $1$ degree after a travelled distance of 50 $m$, we notice that the observed drift issues in section \ref{sec:ijrr} are not obviously visible over these short distances. Especially in yaw we can not register clear drift on this short sequence. \\
 
-Regarding local accuracy (figure \ref{pics:euroc} e and f) a relative translation error of 3-4 $cm$ after 1 $m$ of travelled distance can be observed. This is significantly higher compared with 2 $cm$ for the long trajectory. The relative orientation error of 0.6 degrees is similar to the one of the long trajectory. The better results for the long trajectory are probably caused by the higher dynamics within that set: The IMU measurements are less noisy for higher excitements and two frames with a travelled distance of 1 $m$ in between have been captured nearer in time. \\
+Regarding local accuracy (figure \ref{pics:euroc} e and f) a relative translation error of 3-4 $cm$ after 1 $m$ of travelled distance can be observed. This is significantly higher compared with 2 $cm$ for the long trajectory. The relative orientation error of 0.6 degrees is similar to the one of the long trajectory. The better results for the long trajectory are probably caused by the higher dynamics within that set: the IMU measurements are less noisy for higher excitements and two frames with a travelled distance of 1 $m$ in between have been captured nearer in time. \\
 
 For a task like dense reconstruction or maintenance, this second dataset is more representative than the long trajectory, as a robot won't move with high speeds during this kind of operation. Therefore relative errors of 3-4 $cm$ and 0.6 degrees have to be expected for a travelled distance of 1 $m$.
 
@@ -198,7 +198,7 @@ By adding an artificial bias to the IMU timestamp, ROVIO has to deal with an ina
     \includegraphics[width=\textwidth]{images/artificial_bias_2.png}
     \caption{}
   \end{subfigure}
-   \caption{ROVIO performance on data from the VI-sensor artificially modified by adding a bias between 0 $ms$ and 100 $ms$ on the IMU timestamp: (a) shows the mean absolute translation error, (b) shows the mean absolute orientation error over different timestamp biases. For biases below 50 $ms$, the errors are only slightly increasing. ROVIO diverges on this data with slow dynamics for biases above 90 $ms$. Fixing the extrinsics between camera and IMU, ROVIO is more robust when faced with large biases.}
+   \caption{ROVIO performance on data from the VI-sensor artificially modified by adding a bias between 0 $ms$ and 100 $ms$ on the IMU timestamp: (a) shows the mean absolute translation error, (b) shows the mean absolute orientation error over different timestamp biases. For biases below 50 $ms$, the errors are only slightly increasing. ROVIO diverges on this data with slow dynamics for biases above 90 $ms$. Fixing the extrinsics between camera and IMU helps ROVIO for large timestamp biases.}
    \label{pics:timesync_artificial}
 \end{figure}
 
@@ -216,7 +216,7 @@ To test and compare ROVIO on two sensor systems with and without time synchroniz
 \begin{figure}[h]
    \centering
    \includegraphics[width=0.4\textwidth]{images/vi_bluefox.JPG}
-   \caption{The experimental sensor setup: A bluefox 2.0 camera (left) is added to the VI-sensor. The bluefox camera has the same characteristics and field of view as the camera of the VI-sensor.}
+   \caption{The experimental sensor setup: a bluefox 2.0 camera (left) is added to the VI-sensor. The bluefox camera has the same characteristics and field of view as the camera of the VI-sensor.}
    \label{pics:vi_bluefox}
 \end{figure}
 
@@ -224,15 +224,17 @@ For the dataset with slow dynamics (figure \ref{pics:timesync_slow}), ROVIO is p
 
 \begin{figure}
   \begin{subfigure}[b]{0.46\textwidth}
+    \captionsetup{skip=6pt}
     \includegraphics[width=\textwidth]{images/slow.png}
     \caption{}
   \end{subfigure}
   \hfill
   \begin{subfigure}[b]{0.42\textwidth}
+    \captionsetup{skip=6pt}
     \includegraphics[width=\textwidth]{images/slow_2D.png}
     \caption{}
   \end{subfigure}
-   \caption{(a) shows a sample image for the two datasets, which have been collected in a vicon room with lots of visible landmarks. (b) shows the tracking performance of ROVIO on the slow dataset, once with time synchronization (VI-sensor) and once without time synchronization (bluefox and VI-sensor-IMU). ROVIO is principially able to track the motion of the sensor system on both data.}
+   \caption{(a) shows a sample image for the two datasets. Both sets have been collected in a vicon room with lots of visible landmarks. (b) shows the tracking performance of ROVIO on the slow dataset, once with time synchronization (VI-sensor) and once without time synchronization (bluefox and VI-sensor-IMU). ROVIO is principially able to track the motion of the sensor system on both data.}
    \label{pics:timesync_slow}
 \end{figure}
 
@@ -240,11 +242,13 @@ For the dataset with fast motions, the outcome is different (figure \ref{pics:ti
 
 \begin{figure}
   \begin{subfigure}[b]{0.48\textwidth}
+    \captionsetup{skip=6pt}
     \includegraphics[width=\textwidth]{images/fast_2D.png}
     \caption{online estimated camera-IMU extrinsics}
   \end{subfigure}
   \hfill
   \begin{subfigure}[b]{0.48\textwidth}
+    \captionsetup{skip=6pt}
     \includegraphics[width=\textwidth]{images/fast_fixed_2D.png}
     \caption{fixed camera-IMU extrinsics}
   \end{subfigure}

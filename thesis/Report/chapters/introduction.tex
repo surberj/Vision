@@ -3,13 +3,13 @@
 %\chapter{Einleitung}
 %\label{sec:einleitung}
 
-One of the key challenges on the way towards autonomous robot navigation is localization. To achieve any autonomous task, a robot needs to estimate its pose, which is the robot position and orientation in space. Visual-inertial Localization is one approach to estimate the robots pose by combining the information of an inertial measurement unit (IMU) and the information retrieved by a camera. A camera image provides rich structure information about the scenery and IMU measurements help estimating the robot pose over short distances. Due to these complementary properties a camera-IMU sensor system is well suited for the complex task of robot localization. The visual-inertial approach has some key advantages in comparison to approaches using other information sources like laser range finders or external localization systems: Camera and IMU are lightweight sensors, which can be equipped on a flying robot; they are passive sensors with a small energy consumption; and they are onboard sensors, which can be applied in GPS-denied environments without modifying the environment itself. \\
+One of the key challenges on the way towards autonomous robot navigation is localization. To achieve any autonomous task, a robot needs to estimate its pose, which is the robot's position and orientation in space. Visual-inertial Localization is one approach to estimate the robot's pose by combining the information of an inertial measurement unit (IMU) and the information retrieved by a camera. A camera image provides rich structure information about the scenery and IMU measurements help estimating the robot's pose over short distances. Due to these complementary properties a camera-IMU sensor system is well suited for the complex task of robot localization. The visual-inertial approach has some key advantages in comparison to approaches using other information sources like laser range finders or external localization systems: camera and IMU are lightweight sensors, which can be equipped on a flying robot; they are passive sensors with a small energy consumption; and they are onboard sensors, which can be applied in GPS-denied environments without modifying the environment itself. \\
 
 
 \begin{figure}[h]
    \centering
    \includegraphics[width=0.6\textwidth]{images/state_of_the_art.png}
-   \caption{The field of visual localization and the subfield of visual-inertial localization with important published algorithms.}
+   \caption{State of the art for the field of visual localization and for the visual-inertial localization in particular.}
    \label{pics:state_of_the_art}
 \end{figure}
 % SVO \cite{forster2014svo}
@@ -37,7 +37,7 @@ In addition to the filtering-based and keyframe-based approach, an implementatio
     \caption{keyframe-based}
     \label{fig:2}
   \end{subfigure}
-\caption{(a) shows the filtering-based principle of localization: The robot pose is propagated between two camera frames based on the IMU measurements and updated based on the cameras landmark observations. The pose of a past frame is not corrected based on a new observation. (b) shows the keyframe-based approach to localization: The robot pose is estimated by a nonlinear optimization based on the IMU data and the landmark observations of a \textit{set} of frames. With this approach the pose of a past frame will be corrected based on a new observation.}
+\caption{(a) shows the filtering-based principle of localization: the robot's pose is propagated between two camera frames based on the IMU measurements and updated based on the cameras landmark observations. The pose of a past frame is not corrected based on a new observation. (b) shows the keyframe-based approach to localization: the robot's pose is estimated by a nonlinear optimization based on the IMU data and the landmark observations of a \textit{set} of frames. With this approach the pose of a past frame is corrected based on a new observation.}
 \label{pics:filtering_keyframe}
 \end{figure}
 

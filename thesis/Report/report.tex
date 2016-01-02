@@ -1,17 +1,17 @@
 %==============================================================================
-% ETHASL - Template for student projects at the ASL
-% 2013.10: Péter Fankhauser
-% This template is based on the IMRT Latex template by Eric A. Mueller.
+% ETHV4RL - Template for student projects at the V4RL
+% 2015.12: Julian Surber
+% This template is based on the ETHASL Latex template by Péter Fankhauser.
 %==============================================================================
 
 \documentclass[10pt,twoside,a4paper]{report}
 
-% ETHASL package
+% ETHV4RL package
 % TODO Choose options according to your project
 % som/bt/st/mt: Studies on Mechatronics, Bachelor Thesis, Semester Thesis, Master Thesis
 % fs/hs: Spring term, Autumn term
 % german/english: German/English
-\usepackage[st,hs,english]{packages/ethasl}
+\usepackage[st,hs,english]{packages/ethv4rl}
 \usepackage{amssymb}
 \usepackage{tikz}
 % Activate for german language
@@ -21,7 +21,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % LaTeX preamble
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{preambles/asl_preamble}
+\input{preambles/v4rl_preamble}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Title page
@@ -29,7 +29,7 @@
 \begin{document}
 
 % TODO Add your title
-\title{\LaTeX\ \!-Template for Student Projects}
+\title{Towards a Generic Visual-Inertial Localization}
 %\subtitle{bla bla bla}
 
 % TODO Add name of the authors
@@ -71,12 +71,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Chapters standard
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{chapters/preface}
-\cleardoublepage
+% \input{chapters/preface}
+% \cleardoublepage
 \input{chapters/abstract}
 \cleardoublepage
-\input{chapters/symbols}
-\cleardoublepage
+%\input{chapters/symbols}
+%\cleardoublepage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Chapters custom
@@ -87,14 +87,12 @@
 % TODO Add your own chapters here
 \input{chapters/introduction}
 \cleardoublepage
-\input{chapters/chapter}
+\input{chapters/methods}
 \cleardoublepage
-% \input{}
-% \cleardoublepage
-% \input{}
-% \cleardoublepage
-% ...
-%
+\input{chapters/results}
+\cleardoublepage
+\input{chapters/conclusion}
+\cleardoublepage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Bibliography
@@ -107,9 +105,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Appendix
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\appendix
-\input{chapters/appendix_text}
+\begin{appendices}
+\input{chapters/appendix_mydata}
+\end{appendices}
 \cleardoublepage
-\input{chapters/appendix_datasheets}
+%\input{chapters/appendix_datasheets}
 
 \end{document}

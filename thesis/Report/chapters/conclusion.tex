@@ -1,0 +1,11 @@
+\chapter{Conclusion}
+\label{sec:conclusion}
+
+With this report, a comparison between ROVIO, a filtering-based, and OKVIS, a keyframe-based algorithm for visual-inertial localization has been presented. OKVIS is outperforming ROVIO in terms of global accuracy. It has been demonstrated that ROVIO is drifting over long distances. Main drift issues occur in yaw - the orientation around the world-z axis. To tackle the drift issues, additional sensor information could be included into the estimation or an additional, computationally more demanding, global optimization could be performed. \\
+
+Regarding local accuracy it has been demonstrated that both algorithms show similar performance. Moreover, we saw that ROVIO is computationally very lightweight. These results and the fact that ROVIO is running very reliably and robustly without any hard fine tuning lead to the conclusion that both algorithms have their advantages and disadvantages and will be worth to be further developed. \\
+
+The analysis towards a more generic sensor system showed that ROVIO is able to run with a hardware-wise non time synchronized sensor system. We further demonstrated that fixing the extrinsics between camera and IMU can increase the robustness of ROVIO regarding time synchronization. These results encourage to go a step further and run ROVIO on an embedded system with a non time synchronized sensor setup. \\
+
+On a higher level the presented results of both ROVIO and OKVIS demonstrate the outstanding possibilities of visual-inertial localization. Together with the advantages of the sensor system (lightweight, small, passive and entirely onboard) we strongly belief that visual-inertial localization will continue to play a major role in the localization of an autonomous mobile robot.
+

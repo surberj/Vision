@@ -1,0 +1,17 @@
+\chapter{Proposal}
+\label{sec:Proposal}
+%\chapter{Einleitung}
+%\label{sec:einleitung}
+
+On the way towards autonomous robot navigation one of the key challenges is localization. To achieve any autonomous task the robot needs to estimate its position and orientation in space. Over the last Decade a series of different approaches for robot localization based on visual-inertial measurements have been proposed. Optimal Keyframe-Based Visual-Inertial SLAM (OKVIS) of Leutenegger et Al, \cite{leutenegger2013keyframe} \cite{leutenegger2015keyframe} and Robust Visual-Inertial Odometry (ROVIO) of Bloesch et Al, \cite{bloeschrobust} turned out to be two promising approaches among others. The two approaches apply inherently different ideas of tackling the issue; OKVIS is working with a nonlinear batch optimization based on Keyframes, while ROVIO is filtering the information from IMU and camera with an Extended Kalman Filter approach.
+
+This work can be seen in the context of the AEROWORKS project, an EU-founded Horizon 2020 ICT programme of several universitary and industrial partners. The projects aim is to design a team of aerial robotic workers doing autonomous collaborative infrastructure inspection and maintenance works. The thesis should help to favour one localization approach to be pursued within AEROWORKS.
+
+The main contribution of this thesis involves
+
+\begin{enumerate}
+\item a useful definition of evaluation metrics for accuracy and computational complexity
+\item an analysis comparing OKVIS and ROVIO in indoor and outdoor environments
+\item demonstrations of limitations and challenges of the two approaches
+\item and outline of future work with a suggestion on how to proceed in the AEROWORKS project
+\end{enumerate}
